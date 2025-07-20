@@ -40,5 +40,5 @@ if st.button("Analyze"):
         else:
             sentiment = "Neutral 😐"
 
-        st.write(f"**Predicted Sentiment:** {sentiment}")
-break 
+        st.write(f"**Predicted Sentiment:** {sentiment}"):
+        break 
