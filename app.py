@@ -1,10 +1,10 @@
 import streamlit as st
-import re
 import pickle
+import re
 
-st.title("Twitter Sentiment Analysis")
-
-tweet = st.text_area("Enter a Tweet")
+# Load the trained model and vectorizer
+model = pickle.load(open("model.pkl", "rb"))
+vectorizer = pickle.load(open("vectorizer.pkl", "rb"))
 
 # ✅ Define the preprocessing function
 def preprocess_tweet(tweet):
@@ -16,15 +16,21 @@ def preprocess_tweet(tweet):
     tweet = tweet.strip()
     return tweet
 
+# ✅ Streamlit app layout
+st.title("Twitter Sentiment Analysis")
+
+tweet = st.text_area("Enter a Tweet")
+
+# ✅ Only analyze when button is clicked
 if st.button("Analyze"):
-   if tweet.strip() == "":
+    if tweet.strip() == "":
         st.warning("Please enter a tweet.")
-   else:
-        cleaned_tweet = preprocess_tweet(tweet)  # 👈 Now it works
+    else:
+        cleaned_tweet = preprocess_tweet(tweet)
         vectorized_tweet = vectorizer.transform([cleaned_tweet])
         prediction = model.predict(vectorized_tweet)[0]
 
-        # Optional: Convert prediction to label
+        # Convert prediction to label
         if prediction == 0:
             sentiment = "Negative 😠"
         elif prediction == 1:
