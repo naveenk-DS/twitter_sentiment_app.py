@@ -36,8 +36,8 @@ if st.button("Analyze"):
         if prediction == 0:
             sentiment = "Negative 😠"
         elif prediction == 1:
-            sentiment = "Neutral 😐"
-        else:
             sentiment = "Positive 😊"
+        else:
+            sentiment = "Neutral 😐"
 
         st.write(f"**Predicted Sentiment:** {sentiment}")
