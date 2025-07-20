@@ -7,7 +7,7 @@ tweet = st.text_area("Enter a Tweet")
 if st.button("Analyze"):
    if tweet.strip() == "":
         st.warning("Please enter a tweet.")
-    else:
+   else:
         cleaned_tweet = preprocess_tweet(tweet)  # 👈 Now it works
         vectorized_tweet = vectorizer.transform([cleaned_tweet])
         prediction = model.predict(vectorized_tweet)[0]
