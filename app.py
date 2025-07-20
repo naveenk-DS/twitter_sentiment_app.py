@@ -34,10 +34,10 @@ if st.button("Analyze"):
         prediction = model.predict([vectorized_tweet])[0]
 
         if prediction == 0:
-            sentiment = "Positive 😊"
+            sentiment = "Negative 😠"
         elif prediction == 1:
             sentiment = "Neutral 😐"
         else:
-            sentiment = "Negative 😠"
+            sentiment = "Positive 😊"
 
         st.write(f"**Predicted Sentiment:** {sentiment}")
