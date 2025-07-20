@@ -4,6 +4,16 @@ st.title("Twitter Sentiment Analysis")
 
 tweet = st.text_area("Enter a Tweet")
 
+# ✅ Define the preprocessing function
+def preprocess_tweet(tweet):
+    tweet = tweet.lower()
+    tweet = re.sub(r'http\S+', '', tweet)
+    tweet = re.sub(r'@\w+', '', tweet)
+    tweet = re.sub(r'#\w+', '', tweet)
+    tweet = re.sub(r'[^\w\s]', '', tweet)
+    tweet = tweet.strip()
+    return tweet
+
 if st.button("Analyze"):
    if tweet.strip() == "":
         st.warning("Please enter a tweet.")
